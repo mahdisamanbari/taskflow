@@ -1,9 +1,10 @@
+import styles from '../components/TaskCard.module.css'
 function TaskCard({ title, status }) {
     return (
-      <div>
-        <h3>{title}</h3>
-        <p>{status}</p>
-      </div>
+    <article className={styles.card}>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.status}>{status}</p>
+    </article>
     );
   }
   
