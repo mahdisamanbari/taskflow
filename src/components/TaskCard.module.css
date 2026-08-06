@@ -17,8 +17,27 @@
     font-size: 18px;
   }
   
+ 
   .status {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .todo {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  .inProgress {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .done {
+    background: #d4edda;
+    color: #155724;
   }
