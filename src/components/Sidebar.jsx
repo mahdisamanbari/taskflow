@@ -1,16 +1,16 @@
 import React from 'react'
-
+import styles from "./Sidebar.module.css";
 function Sidebar() {
   return (
-    <aside>
-    <h2>TaskFlow</h2>
+    <aside className={styles.sidebar}>
+      <h2 className={styles.logo}>TaskFlow</h2>
 
-    <ul>
-      <li>Dashboard</li>
-      <li>Tasks</li>
-      <li>Settings</li>
-    </ul>
-  </aside>
+      <ul className={styles.menu}>
+        <li>Dashboard</li>
+        <li>Tasks</li>
+        <li>Settings</li>
+      </ul>
+    </aside>
   )
 }
 
