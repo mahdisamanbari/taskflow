@@ -1,7 +1,17 @@
 import React from 'react'
 import TaskList from "../components/TaskList";
 import AddTaskForm from '../components/AddTaskForm';
-const tasks = [
+import { useState } from 'react';
+
+  
+function Dashboard() {
+  function handleAddTask(newTask) {
+    setTasks((currentTasks) => [
+      ...currentTasks,
+      newTask,
+    ]);
+  }
+  const [tasks , setTasks]=useState([
     {
       id: 1,
       title: "Learn React",
@@ -17,13 +27,11 @@ const tasks = [
       title: "Push to GitHub",
       status: "Done",
     },
-  ];
-  
-function Dashboard() {
+  ])
   return (
     <>
     <h1>Dashboard</h1>
-    <AddTaskForm />
+    <AddTaskForm onAddTask={handleAddTask} />
     <TaskList tasks={tasks} />
   </>
   )

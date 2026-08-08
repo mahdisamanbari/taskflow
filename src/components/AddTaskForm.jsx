@@ -1,10 +1,26 @@
 import React from 'react'
 import {useState} from 'react'
-function AddTaskForm() {
+function AddTaskForm({onAddTask}) {
     const [title , setTitle]=useState('')
     const [status , setStatus]=useState('Todo')
+    function handleSubmit(event) {
+        event.preventDefault();
+    
+        const newTask = {
+          id: Date.now(),
+          title,
+          status,
+        };
+    
+        onAddTask(newTask);
+    
+        setTitle("");
+        setStatus("Todo");
+    }
+
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
     <input
       type="text"
       placeholder="Task title"
