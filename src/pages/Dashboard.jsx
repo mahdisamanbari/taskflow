@@ -1,5 +1,6 @@
 import React from 'react'
 import TaskList from "../components/TaskList";
+import AddTaskForm from '../components/AddTaskForm';
 const tasks = [
     {
       id: 1,
@@ -22,7 +23,7 @@ function Dashboard() {
   return (
     <>
     <h1>Dashboard</h1>
-
+    <AddTaskForm />
     <TaskList tasks={tasks} />
   </>
   )
