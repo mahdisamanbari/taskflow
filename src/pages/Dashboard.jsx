@@ -11,6 +11,11 @@ function Dashboard() {
       newTask,
     ]);
   }
+  function handleDeleteTask(taskId) {
+    setTasks((currentTasks) =>
+      currentTasks.filter((task) => task.id !== taskId)
+    );
+  }
   const [tasks , setTasks]=useState([
     {
       id: 1,
@@ -32,7 +37,10 @@ function Dashboard() {
     <>
     <h1>Dashboard</h1>
     <AddTaskForm onAddTask={handleAddTask} />
-    <TaskList tasks={tasks} />
+    <TaskList
+      tasks={tasks}
+      onDelete={handleDeleteTask}
+      />
   </>
   )
 }
