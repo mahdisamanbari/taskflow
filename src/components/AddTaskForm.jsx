@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
+import styles from "./AddTaskForm.module.css";
 function AddTaskForm({onAddTask}) {
     const [title , setTitle]=useState('')
     const [status , setStatus]=useState('Todo')
@@ -26,30 +27,35 @@ function AddTaskForm({onAddTask}) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-    <input
-      type="text"
-      placeholder="Task title"
-      value={title}
-      onChange={(event)=>{
-        setTitle(event.target.value);
-        setError("");
-    }}
-    />
- 
+    <form className={styles.form} onSubmit={handleSubmit}>
+    <div className={styles.inputGroup}>
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="What needs to be done?"
+        value={title}
+        onChange={(event) => {
+          setTitle(event.target.value);
+          setError("");
+        }}
+      />
+
+      {error && <p className={styles.error}>{error}</p>}
+    </div>
+
     <select
-    value={status}
-    onChange={(event)=>setStatus(event.target.value)}
+      className={styles.select}
+      value={status}
+      onChange={(event) => setStatus(event.target.value)}
     >
       <option value="Todo">Todo</option>
       <option value="In Progress">In Progress</option>
       <option value="Done">Done</option>
     </select>
 
-    <button type="submit">
+    <button className={styles.button} type="submit">
       Add Task
     </button>
-    {error && <p>{error}</p>}
   </form>
   )
 }
