@@ -3,8 +3,13 @@ import {useState} from 'react'
 function AddTaskForm({onAddTask}) {
     const [title , setTitle]=useState('')
     const [status , setStatus]=useState('Todo')
+    const [error, setError] = useState("");
     function handleSubmit(event) {
         event.preventDefault();
+        if (!title.trim()) {
+      setError("Task title is required.");
+      return;
+    }
     
         const newTask = {
           id: Date.now(),
@@ -16,6 +21,7 @@ function AddTaskForm({onAddTask}) {
     
         setTitle("");
         setStatus("Todo");
+        setError("");
     }
 
 
@@ -25,7 +31,10 @@ function AddTaskForm({onAddTask}) {
       type="text"
       placeholder="Task title"
       value={title}
-      onChange={(event)=>setTitle(event.target.value)}
+      onChange={(event)=>{
+        setTitle(event.target.value);
+        setError("");
+    }}
     />
  
     <select
@@ -40,6 +49,7 @@ function AddTaskForm({onAddTask}) {
     <button type="submit">
       Add Task
     </button>
+    {error && <p>{error}</p>}
   </form>
   )
 }
