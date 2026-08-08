@@ -41,3 +41,77 @@
     background: #d4edda;
     color: #155724;
   }
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .status {
+    display: inline-block;
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .todo {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  .inProgress {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .done {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  .deleteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #dc2626;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .deleteButton:hover {
+    background: #fee2e2;
+  }
+  
+  .deleteButton:active {
+    transform: scale(0.95);
+  }

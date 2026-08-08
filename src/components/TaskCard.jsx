@@ -1,3 +1,4 @@
+import { MdDelete } from "react-icons/md";
 import styles from "./TaskCard.module.css";
 
 function TaskCard({ title, status, onDelete }) {
@@ -9,17 +10,21 @@ function TaskCard({ title, status, onDelete }) {
 
   return (
     <article className={styles.card}>
-      <h3 className={styles.title}>{title}</h3>
+      <div className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
 
-      <span className={`${styles.status} ${statusClass[status]}`}>
-        {status}
-      </span>
+        <span className={`${styles.status} ${statusClass[status]}`}>
+          {status}
+        </span>
+      </div>
 
       <button
+        className={styles.deleteButton}
         type="button"
         onClick={onDelete}
+        aria-label={`Delete ${title}`}
       >
-        Delete
+        <MdDelete />
       </button>
     </article>
   );
