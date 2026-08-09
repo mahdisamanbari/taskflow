@@ -2,7 +2,7 @@ import React from 'react'
 import TaskList from "../components/TaskList";
 import AddTaskForm from '../components/AddTaskForm';
 import { useState } from 'react';
-
+import EditTaskForm from "../components/EditTaskForm";
   
 function Dashboard() {
   function handleAddTask(newTask) {
@@ -37,6 +37,18 @@ function Dashboard() {
   function handleEditTask(task) {
     setEditingTask(task);
   }
+  function handleSaveTask(updatedTask) {
+    setTasks((currentTasks) =>
+      currentTasks.map((task) =>
+        task.id === updatedTask.id ? updatedTask : task
+      )
+    );
+  
+    setEditingTask(null);
+  }
+  function handleCancelEdit() {
+    setEditingTask(null);
+  }
   return (
     <>
     <h1>Dashboard</h1>
@@ -47,9 +59,11 @@ function Dashboard() {
       onEdit={handleEditTask}
       />
       {editingTask && (
-        <p>
-        Editing: {editingTask.title}
-        </p>
+        <EditTaskForm
+         task={editingTask}
+         onSave={handleSaveTask}
+         onCancel={handleCancelEdit}
+        />
       )}
   </>
   )
