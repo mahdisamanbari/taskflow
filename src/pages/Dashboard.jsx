@@ -16,6 +16,7 @@ function Dashboard() {
       currentTasks.filter((task) => task.id !== taskId)
     );
   }
+  const [editingTask, setEditingTask] = useState(null);
   const [tasks , setTasks]=useState([
     {
       id: 1,
@@ -33,6 +34,9 @@ function Dashboard() {
       status: "Done",
     },
   ])
+  function handleEditTask(task) {
+    setEditingTask(task);
+  }
   return (
     <>
     <h1>Dashboard</h1>
@@ -40,7 +44,13 @@ function Dashboard() {
     <TaskList
       tasks={tasks}
       onDelete={handleDeleteTask}
+      onEdit={handleEditTask}
       />
+      {editingTask && (
+        <p>
+        Editing: {editingTask.title}
+        </p>
+      )}
   </>
   )
 }

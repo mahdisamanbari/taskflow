@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard";
 
-function TaskList({ tasks, onDelete }) {
+function TaskList({ tasks, onDelete , onEdit}) {
   return (
     <>
       {tasks.map((task) => (
@@ -9,6 +9,7 @@ function TaskList({ tasks, onDelete }) {
           title={task.title}
           status={task.status}
           onDelete={() => onDelete(task.id)}
+          onEdit = {()=>onEdit(task)}
         />
       ))}
     </>

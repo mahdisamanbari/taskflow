@@ -1,7 +1,7 @@
-import { MdDelete } from "react-icons/md";
+import { MdDelete,MdEdit } from "react-icons/md";
 import styles from "./TaskCard.module.css";
 
-function TaskCard({ title, status, onDelete }) {
+function TaskCard({ title, status, onDelete ,onEdit }) {
   const statusClass = {
     Todo: styles.todo,
     "In Progress": styles.inProgress,
@@ -18,14 +18,25 @@ function TaskCard({ title, status, onDelete }) {
         </span>
       </div>
 
-      <button
-        className={styles.deleteButton}
-        type="button"
-        onClick={onDelete}
-        aria-label={`Delete ${title}`}
-      >
-        <MdDelete />
-      </button>
+      <div className={styles.actions}>
+        <button
+          className={styles.editButton}
+          type="button"
+          onClick={onEdit}
+          aria-label={`Edit ${title}`}
+        >
+          <MdEdit />
+        </button>
+
+        <button
+          className={styles.deleteButton}
+          type="button"
+          onClick={onDelete}
+          aria-label={`Delete ${title}`}
+        >
+          <MdDelete />
+        </button>
+      </div>
     </article>
   );
 }
