@@ -1,7 +1,7 @@
 import React from 'react'
 import TaskList from "../components/TaskList";
 import AddTaskForm from '../components/AddTaskForm';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import EditTaskForm from "../components/EditTaskForm";
   
 function Dashboard() {
@@ -17,23 +17,38 @@ function Dashboard() {
     );
   }
   const [editingTask, setEditingTask] = useState(null);
-  const [tasks , setTasks]=useState([
-    {
-      id: 1,
-      title: "Learn React",
-      status: "In Progress",
-    },
-    {
-      id: 2,
-      title: "Build TaskFlow",
-      status: "Todo",
-    },
-    {
-      id: 3,
-      title: "Push to GitHub",
-      status: "Done",
-    },
-  ])
+  
+  const [tasks, setTasks] = useState(() => {
+  
+    const savedTasks = localStorage.getItem("TASKS");
+  
+    if (savedTasks) {
+      return JSON.parse(savedTasks)
+    }
+  
+    return [
+      {
+        id: 1,
+        title: "Learn React",
+        status: "In Progress",
+      },
+      {
+        id: 2,
+        title: "Build TaskFlow",
+        status: "Todo",
+      },
+      {
+        id: 3,
+        title: "Push to GitHub",
+        status: "Done",
+      },
+    ]
+  });
+  useEffect(() => {
+    console.log(tasks)
+   localStorage.setItem( "TASKS" , JSON.stringify(tasks))
+ }, [tasks]);
+
   function handleEditTask(task) {
     setEditingTask(task);
   }
@@ -49,6 +64,7 @@ function Dashboard() {
   function handleCancelEdit() {
     setEditingTask(null);
   }
+  
   return (
     <>
     <h1>Dashboard</h1>
